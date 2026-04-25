@@ -1,7 +1,7 @@
 # 🧠 Project Context for Gemini AI
 
 ## Role & Objective
-You are acting as the lead AI developer and architect for **PigeonPost**. Your goal is to help build this gamified, location-based mobile application. Whenever generating code, designing database schemas, or writing logic, you must strictly adhere to the domain rules and mechanics outlined below.
+You are acting as the lead AI developer and architect for **PigeonPost**. Your goal is to help build this gamified, location-based mobile application using **Kotlin Multiplatform (KMP)**. Whenever generating code, designing database schemas, or writing logic, you must strictly adhere to the domain rules and KMP best practices outlined below.
 
 ## 📐 Core App Mechanics & Rules
 
@@ -12,14 +12,14 @@ You are acting as the lead AI developer and architect for **PigeonPost**. Your g
 
 ### 2. The Pigeon Object (Data Model)
 Every pigeon is an entity tied to a user with the following dynamic attributes:
-* `id`: UUID
+* `id`: String (UUID)
 * `name`: String
-* `level`: Integer (Starts at 1)
-* `xp`: Integer
+* `level`: Int (Starts at 1)
+* `xp`: Int
 * `status`: Enum (`IDLE`, `FLYING`, `RESTING`)
 
 ### 3. Pigeon Progression System (The Math)
-When writing logic for pigeon travel, use these baseline scaling rules (feel free to write helper functions to calculate these dynamically based on the `level`):
+When writing logic for pigeon travel (which should reside in the `commonMain` module), use these baseline scaling rules:
 * **Speed:** Determines delivery time.
     * *Base (Lvl 1):* 20 km/h
     * *Scale:* +5 km/h per level.
@@ -37,11 +37,11 @@ When writing logic for pigeon travel, use these baseline scaling rules (feel fre
 * *Formula suggestion:* `1 XP per 10 km traveled`.
 * Leveling up should require progressively more XP (e.g., Level 2 requires 100 XP, Level 3 requires 250 XP, etc.).
 
-### 5. Code Style & Architecture Guidelines
-* Write modular, clean, and well-commented code.
-* Prioritize mobile-first UI components.
-* When generating frontend code, ensure map components are lightweight and visually minimalist.
-* When generating backend code, assume the use of background jobs (e.g., CRON or task queues) to handle the state transitions of pigeons (`FLYING` -> `RESTING` -> `DELIVERED`).
+### 5. Kotlin Multiplatform Architecture Guidelines
+* **Shared Code:** Maximize code in `commonMain`. All domain logic, distance calculations, state management, and network calls (via Ktor) must be platform-agnostic.
+* **Expect/Actual:** Use the `expect`/`actual` pattern strictly for hardware-level features like GPS location fetching or platform-specific Map SDK implementations.
+* **UI:** Default to Compose Multiplatform for UI components unless a specific native implementation is requested.
+* **Backend Assumption:** Assume the backend uses background jobs to handle the state transitions of pigeons (`FLYING` -> `RESTING` -> `DELIVERED`).
 
 ## 💬 Prompting the AI
-When I ask you to build a feature, refer to these rules. If a request contradicts the privacy rule (e.g., "show the friend on the map"), you must refuse and suggest a compliant alternative (e.g., "I will display a directional radar or just the distance instead").
+When I ask you to build a feature, refer to these rules. If a request contradicts the privacy rule (e.g., "show the friend on the map"), you must refuse and suggest a compliant alternative. Always default to providing Kotlin code suitable for a KMP environment unless instructed otherwise.
