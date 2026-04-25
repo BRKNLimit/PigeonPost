@@ -19,8 +19,9 @@ PigeonPost is a gamified, location-based social messenger that brings the charm 
 3.  **Dispatch:** Watch your pigeon take off on your map. 
 4.  **Wait for Delivery:** The delivery time is dynamically calculated based on the real-world distance between you and your friend, divided by your pigeon's current speed stat.
 
-## 🛠 Tech Stack Suggestions (For the Developer)
-* **Frontend:** React Native / Expo or Flutter (for seamless iOS/Android GPS and Map integration).
-* **Backend:** Firebase, Supabase, or Node.js with PostgreSQL (for user data, pigeon stats, and message queues).
-* **Maps:** Mapbox GL or Google Maps SDK with custom, minimalist map styling.
-* **Background Tasks:** Background workers to calculate pigeon arrival times and send push notifications upon delivery.
+## 🛠 Tech Stack (Kotlin Multiplatform)
+* **Architecture:** Kotlin Multiplatform (KMP) for sharing business logic, networking, and state management across iOS and Android.
+* **UI Framework:** Compose Multiplatform (or native Jetpack Compose for Android / SwiftUI for iOS depending on specific map integrations).
+* **Networking:** Ktor Client for API communication.
+* **Backend:** Node.js, Spring Boot, or Supabase (for user data, pigeon stats, and message queues).
+* **Maps:** Mapbox SDK or Google Maps SDK (utilizing expect/actual patterns for platform-specific map rendering).
