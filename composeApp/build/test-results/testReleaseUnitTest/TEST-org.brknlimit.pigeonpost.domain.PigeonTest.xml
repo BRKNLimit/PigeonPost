@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.brknlimit.pigeonpost.domain.PigeonTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-04-25T18:59:31.800Z" hostname="DESKTOP-GIDDAPS" time="0.019">
+  <properties/>
+  <testcase name="testXpGainAndLevelUp" classname="org.brknlimit.pigeonpost.domain.PigeonTest" time="0.016"/>
+  <testcase name="testPigeonStatsLevel1" classname="org.brknlimit.pigeonpost.domain.PigeonTest" time="0.001"/>
+  <testcase name="testPigeonStatsLevel5" classname="org.brknlimit.pigeonpost.domain.PigeonTest" time="0.0"/>
+  <testcase name="testMultiLevelUp" classname="org.brknlimit.pigeonpost.domain.PigeonTest" time="0.0"/>
+  <testcase name="testPigeonStatsLevel10" classname="org.brknlimit.pigeonpost.domain.PigeonTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
